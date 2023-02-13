@@ -6,9 +6,9 @@ let score = 0;
 
 document.querySelector(".score").textContent = score;
 
-fetch("/data/cards.json")
-  .then((res) => res.json())
-  .then((data) => {
+fetch(data/cards.json)
+  .then(Response => Response.json())
+  .then(data => {
     cards = [...data, ...data];
     shuffleCards();
     generateCards();
