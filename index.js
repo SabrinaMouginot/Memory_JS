@@ -6,13 +6,19 @@ let score = 0;
 
 document.querySelector(".score").textContent = score;
 
-fetch(data/cards.json)
-  .then(Response => Response.json())
-  .then(data => {
+//L'API Fetch fournit une interface JavaScript pour l'accès et la manipulation des parties du pipeline HTTP, comme les requêtes et les réponses. 
+//La méthode fetch() procure un moyen facile et logique de récupérer des ressources à travers le réseau de manière asynchrone.
+
+fetch("./data/cards.json")
+  .then((res) => res.json())
+  .then((data) => {
     cards = [...data, ...data];
     shuffleCards();
     generateCards();
   });
+
+// https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch#corps
+// https://developer.mozilla.org/fr/docs/Web/HTTP/CORS
 
   function shuffleCards() {
     let currentIndex = cards.length,
@@ -27,6 +33,8 @@ fetch(data/cards.json)
     }
   }
   
+// A NOTER: Le mélange de Fisher-Yates (mélange de Knuth) est un algorithme pour générer une permutation aléatoire d'un ensemble fini, c-à-d pour mélanger un ensemble d'objets.
+
   function generateCards() {
     for (let card of cards) {
       const cardElement = document.createElement("div");
